@@ -244,11 +244,14 @@
                 <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
+                <div class="g-recaptcha" data-sitekey="6Lel0mYpAAAAAFJ9TTqBTIe0LRUJaePgcu2m4yUg"></div>
                 <div class="loading" style="display: none;">Loading</div>
                 <div class="error-message" style="display: none;"></div>
                 <div class="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="button" onclick="sendEmail()">Send Message</button></div>
+            </div>
+
             </form>
           </div>
         </div>
@@ -259,6 +262,13 @@
           emailjs.init("user_your_actual_emailjs_public_key");
 
           function sendEmail() {
+            var response = grecaptcha.getResponse();
+            if (!response) {
+              // Handle case when reCAPTCHA is not checked
+              alert("Please complete the reCAPTCHA to proceed.");
+              return;
+            }
+
             document.querySelector('.loading').style.display = 'block';
             document.querySelector('.error-message').style.display = 'none';
             document.querySelector('.sent-message').style.display = 'none';
@@ -375,6 +385,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
