@@ -220,18 +220,19 @@
             <form id="contactForm" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <input type="text" name="to_name" class="form-control" id="to_name" placeholder="Recipient's Name" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  <input type="text" name="from_name" class="form-control" id="from_name" placeholder="Your Name" required>
                 </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
               </div>
+              <div class="form-group mt-3">
+                <input type="email" class="form-control" name="reply_to" id="reply_to" placeholder="Your Email" required>
+              </div>
+              <!-- ... (additional form fields if needed) ... -->
               <div class="my-3">
                 <div class="loading" style="display: none;">Loading</div>
                 <div class="error-message" style="display: none;"></div>
@@ -257,31 +258,32 @@
           };
 
           function sendEmail() {
-          document.querySelector('.loading').style.display = 'block';
-          document.querySelector('.error-message').style.display = 'none';
-          document.querySelector('.sent-message').style.display = 'none';
+            document.querySelector('.loading').style.display = 'block';
+            document.querySelector('.error-message').style.display = 'none';
+            document.querySelector('.sent-message').style.display = 'none';
 
-          const templateParams = {
-            to_name: document.getElementById('to_name').value,
-            from_name: document.getElementById('from_name').value,
-            message: document.getElementById('message').value,
-            reply_to: document.getElementById('reply_to').value
-          };
+            const templateParams = {
+              to_name: document.getElementById('to_name').value,
+              from_name: document.getElementById('from_name').value,
+              message: document.getElementById('message').value,
+              reply_to: document.getElementById('reply_to').value
+            };
 
-          emailjs.send("service_ndnqomm", "template_yqf8m1q", templateParams)
-            .then(
-              function (response) {
-                document.querySelector('.loading').style.display = 'none';
-                document.querySelector('.sent-message').style.display = 'block';
-                resetForm();
-              },
-              function (error) {
-                document.querySelector('.loading').style.display = 'none';
-                document.querySelector('.error-message').style.display = 'block';
-              }
-            );
-        }
-      </script>
+            emailjs.send("service_ndnqomm", "template_yqf8m1q", templateParams)
+              .then(
+                function (response) {
+                  document.querySelector('.loading').style.display = 'none';
+                  document.querySelector('.sent-message').style.display = 'block';
+                  resetForm();
+                },
+                function (error) {
+                  document.querySelector('.loading').style.display = 'none';
+                  document.querySelector('.error-message').style.display = 'block';
+                }
+              );
+          }
+        </script>
+
 
       </div>
     </section><!-- End Contact Section -->
