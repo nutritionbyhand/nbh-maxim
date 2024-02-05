@@ -242,36 +242,41 @@
         <script>
           emailjs.init("9RBzHE6HCUKhwhxjk");
 
-          function sendEmail() {
-            document.querySelector('.loading').style.display = 'block';
-            document.querySelector('.error-message').style.display = 'none';
-            document.querySelector('.sent-message').style.display = 'none';
-
-            const templateParams = {
-              name: document.getElementById('name').value,
-              email: document.getElementById('email').value,
-              subject: document.getElementById('subject').value,
-              message: document.getElementById('message').value
-            };
-
-            emailjs.send("service_ndnqomm", "template_yqf8m1q", templateParams)
-              .then(
-                function (response) {
-                  document.querySelector('.loading').style.display = 'none';
-                  document.querySelector('.sent-message').style.display = 'block';
-                  resetForm();
-                },
-                function (error) {
-                  document.querySelector('.loading').style.display = 'none';
-                  document.querySelector('.error-message').style.display = 'block';
-                }
-              );
-          }
-          function resetForm() {
+          // Define resetForm in the global scope
+          window.resetForm = function () {
             var form = document.getElementById('contactForm');
             form.reset();
-          }
-        </script>
+            if (typeof grecaptcha !== 'undefined' && typeof grecaptcha.reset === 'function') {
+              grecaptcha.reset();
+            }
+          };
+
+          function sendEmail() {
+          document.querySelector('.loading').style.display = 'block';
+          document.querySelector('.error-message').style.display = 'none';
+          document.querySelector('.sent-message').style.display = 'none';
+
+          const templateParams = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+          };
+
+          emailjs.send("service_ndnqomm", "template_yqf8m1q", templateParams)
+            .then(
+              function (response) {
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.sent-message').style.display = 'block';
+                resetForm();
+              },
+              function (error) {
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.error-message').style.display = 'block';
+              }
+            );
+        }
+      </script>
 
       </div>
     </section><!-- End Contact Section -->
