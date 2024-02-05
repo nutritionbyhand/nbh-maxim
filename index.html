@@ -244,14 +244,11 @@
                 <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
-                <!--<div class="g-recaptcha" data-sitekey="6Lel0mYpAAAAAFJ9TTqBTIe0LRUJaePgcu2m4yUg"></div>-->
                 <div class="loading" style="display: none;">Loading</div>
                 <div class="error-message" style="display: none;"></div>
                 <div class="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="button" onclick="sendEmail()">Send Message</button></div>
-            </div>
-
             </form>
           </div>
         </div>
@@ -259,10 +256,10 @@
         <!-- Email.js script -->
         <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
         <script>
-          emailjs.init("user_your_actual_emailjs_public_key");
+          emailjs.init("9RBzHE6HCUKhwhxjk");
 
           function sendEmail() {
-            ocument.querySelector('.loading').style.display = 'block';
+            document.querySelector('.loading').style.display = 'block';
             document.querySelector('.error-message').style.display = 'none';
             document.querySelector('.sent-message').style.display = 'none';
 
@@ -273,12 +270,11 @@
               message: document.getElementById('message').value
             };
 
-            emailjs.send("your_service_id", "your_template_id", templateParams)
+            emailjs.send("service_ndnqomm", "template_yqf8m1q", templateParams)
               .then(
                 function (response) {
                   document.querySelector('.loading').style.display = 'none';
                   document.querySelector('.sent-message').style.display = 'block';
-                  resetForm();
                 },
                 function (error) {
                   document.querySelector('.loading').style.display = 'none';
@@ -286,12 +282,7 @@
                 }
               );
           }
-
-          function resetForm() {
-            document.getElementById('contactForm').reset();
-          }
         </script>
-
 
       </div>
     </section><!-- End Contact Section -->
