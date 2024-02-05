@@ -31,30 +31,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init({
-              publicKey: "9RBzHE6HCUKhwhxjk",
-            });
-        })();
-    </script>
-    <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // these IDs from the previous steps
-                emailjs.sendForm('contact_service', 'contact_form', this)
-                    .then(() => {
-                        console.log('SUCCESS!');
-                    }, (error) => {
-                        console.log('FAILED...', error);
-                    });
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -157,7 +133,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>I am located in Eugene, Oregon and licensed in the states of Oregon and Washington. I can see clients in these states, as well as others depending on licensure laws. If you have questions or would like to get started working together, contact me via email: nutritionbyhand@gmail.com or phone: 541-525-0162.</p>
+          <p>I am located in Eugene, Oregon and licensed in the states of Oregon and Washington. I can see clients in these states, as well as others depending on licensure laws. If you have questions or would like to get started working together, contact me via email: <a href="mailto:nutritionbyhand@gmail.com?subject=Web%20Inquiry:%20Nutrition%20by%20Hand">nutritionbyhand@gmail.com</a> or phone: 541-525-0162.</p>
 
           <p></br>Initial Sessions: 55min</br>
           Follow Up Sessions: 30-55min</br></p>
@@ -239,16 +215,6 @@
         </div>
 
         <!-- Your HTML form -->
-        <form id="contact-form">
-          <input type="hidden" name="contact_number">
-          <label>Name</label>
-          <input type="text" name="from_name">
-          <label>Email</label>
-          <input type="email" name="reply_to">
-          <label>Message</label>
-          <textarea name="message"></textarea>
-          <input type="submit" value="Send">
-      </form>
       </div>
     </section><!-- End Contact Section -->
 
