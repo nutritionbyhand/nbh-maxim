@@ -1522,7 +1522,7 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 81px); /* Adjust the height to cover only the footer text area */
   background-image: url('https://nutritionbyhand.github.io/nbh-maxim/Beautiful_Majestic.jpg');
   background-size: cover; /* Optional: adjust to your needs */
   background-position: center; /* Optional: adjust to your needs */
